@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Xpress Lube and Tires Services Inc | 24/7 Mobile Auto Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --red: #D4192A;
+    --red-dark: #A8101F;
+    --red-light: #FF2F42;
+    --navy: #0A1628;
+    --navy-mid: #142240;
+    --navy-light: #1E3360;
+    --white: #FFFFFF;
+    --off-white: #F5F6F8;
+    --gray: #8A93A8;
+    --gray-light: #E8EAF0;
+    --text: #0D1B2A;
+    --text-muted: #5A6478;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 2px 8px rgba(10,22,40,0.08);
+    --shadow-md: 0 8px 32px rgba(10,22,40,0.12);
+    --shadow-lg: 0 20px 60px rgba(10,22,40,0.18);
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  button { cursor: pointer; border: none; background: none; font-family: inherit; }
+  input, select, textarea { font-family: inherit; }
+
+  /* ===== PAGE SYSTEM ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== NAVBAR ===== */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--navy);
+    border-bottom: 2px solid var(--red);
+    transition: var(--transition);
+  }
+  #navbar.scrolled { background: rgba(10,22,40,0.97); box-shadow: var(--shadow-lg); }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 72px;
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; line-height: 1;
+    color: var(--white); cursor: pointer;
+  }
+  .nav-logo .logo-main {
+    font-family: var(--font-display); font-weight: 800; font-size: 1.6rem;
+    letter-spacing: 0.02em; color: var(--white);
+  }
+  .nav-logo .logo-main span { color: var(--red); }
+  .nav-logo .logo-sub { font-size: 0.62rem; color: var(--gray); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 1px; }
+  .nav-links {
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 500;
+    padding: 0.5rem 1rem; border-radius: 4px; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: var(--transition);
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(212,25,42,0.18); }
+  .nav-badge {
+    background: var(--red); color: var(--white); font-size: 0.7rem;
+    font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 3px;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-left: 0.5rem;
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+  @keyframes pulse-badge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,25,42,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(212,25,42,0); }
+  }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 0;
+    background: var(--navy-mid); border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0.5rem 0 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85); padding: 0.75rem 2rem; font-size: 0.9rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.05); transition: var(--transition);
+    cursor: pointer;
+  }
+  .mobile-menu a:hover { color: var(--white); background: rgba(212,25,42,0.15); }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 2rem;
+    border-radius: 4px; transition: var(--transition); cursor: pointer;
+  }
+  .btn-primary { background: var(--red); color: var(--white); }
+  .btn-primary:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,25,42,0.4); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+  .btn-dark { background: var(--navy); color: var(--white); }
+  .btn-dark:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  /* ===== SECTION SHARED ===== */
+  .section { padding: 6rem 2rem; }
+  .section-sm { padding: 4rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: rgba(212,25,42,0.1); color: var(--red);
+    font-family: var(--font-display); font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.2em; text-transform: uppercase; padding: 0.35rem 1rem;
+    border-radius: 2px; border-left: 3px solid var(--red); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05; letter-spacing: 0.01em; margin-bottom: 1rem;
+    text-transform: uppercase; color: var(--navy);
+  }
+  .section-title span { color: var(--red); }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-muted); max-width: 580px; line-height: 1.7; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-subtitle { margin: 0 auto; }
+
+  /* ===== HOME: HERO ===== */
+  #hero {
+    min-height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    background: var(--navy);
+    padding-top: 72px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.018) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.018) 60px),
+      linear-gradient(135deg, var(--navy) 0%, #0d1f42 60%, #1a0a0e 100%);
+  }
+  .hero-red-stripe {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 42%;
+    background: linear-gradient(135deg, transparent 30px, rgba(212,25,42,0.07) 30px);
+    z-index: 0;
+  }
+  .hero-gear {
+    position: absolute; right: -80px; bottom: -80px;
+    width: 520px; height: 520px; z-index: 0; opacity: 0.04;
+  }
+  .hero-inner {
+    position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;
+    padding: 6rem 2rem 5rem; width: 100%;
+  }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow-dot {
+    width: 8px; height: 8px; background: var(--red); border-radius: 50%;
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+  .hero-eyebrow-text {
+    font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--red);
+  }
+  .hero-title {
+    font-family: var(--font-display); font-weight: 800; color: var(--white);
+    font-size: clamp(3rem, 8vw, 6rem); line-height: 0.95; letter-spacing: -0.01em;
+    text-transform: uppercase; margin-bottom: 1.75rem;
+  }
+  .hero-title .line2 { color: var(--red); display: block; }
+  .hero-desc {
+    color: rgba(255,255,255,0.65); font-size: 1.1rem; max-width: 520px;
+    line-height: 1.75; margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
+  .hero-stats {
+    display: flex; flex-wrap: wrap; gap: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem;
+  }
+  .hero-stat-num {
+    font-family: var(--font-display); font-weight: 800; font-size: 2.2rem;
+    color: var(--white); line-height: 1;
+  }
+  .hero-stat-num span { color: var(--red); }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
+
+  /* ===== ALERT BAR ===== */
+  .alert-bar {
+    background: var(--red); color: var(--white); text-align: center;
+    padding: 0.6rem 2rem; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .alert-bar span { opacity: 0.75; margin: 0 1rem; }
+
+  /* ===== SERVICES GRID ===== */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--gray-light);
+    border-radius: 6px; padding: 2rem; position: relative; overflow: hidden;
+    transition: var(--transition);
+  }
+  .service-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--red); transform: scaleY(0);
+    transition: var(--transition); transform-origin: bottom;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .service-card:hover::before { transform: scaleY(1); }
+  .service-icon {
+    width: 52px; height: 52px; background: rgba(212,25,42,0.08);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .service-icon svg { width: 26px; height: 26px; fill: var(--red); }
+  .service-card h3 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; color: var(--navy);
+  }
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* ===== WHY CHOOSE US ===== */
+  #why { background: var(--navy); color: var(--white); }
+  #why .section-title { color: var(--white); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; overflow: hidden; }
+  .why-item {
+    padding: 2.25rem 2rem; background: var(--navy-mid);
+    transition: var(--transition);
+  }
+  .why-item:hover { background: var(--navy-light); }
+  .why-num {
+    font-family: var(--font-display); font-weight: 800; font-size: 3rem;
+    color: var(--red); line-height: 1; margin-bottom: 0.75rem; opacity: 0.9;
+  }
+  .why-item h3 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; color: var(--white);
+  }
+  .why-item p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ===== AREAS ===== */
+  #areas { background: var(--off-white); }
+  .areas-wrap { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .area-pill {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--white); border: 1px solid var(--gray-light);
+    padding: 0.7rem 1.4rem; border-radius: 40px;
+    font-weight: 500; font-size: 0.9rem; color: var(--navy);
+    box-shadow: var(--shadow-sm); transition: var(--transition);
+  }
+  .area-pill:hover { background: var(--red); color: var(--white); border-color: var(--red); transform: translateY(-2px); }
+  .area-pill svg { width: 14px; height: 14px; fill: currentColor; }
+  .areas-note { margin-top: 2rem; font-size: 0.88rem; color: var(--text-muted); }
+
+  /* ===== VEHICLE SELECTOR ===== */
+  #quote { background: var(--navy); }
+  #quote .section-title { color: var(--white); }
+  .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .vehicle-selector-box {
+    background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 2rem; grid-column: 1 / -1;
+  }
+  .vehicle-selector-box h3 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+  }
+  .vehicle-selector-box p { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+  .vs-selects { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .vs-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .vs-group label { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .vs-select, .vs-input {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: var(--white);
+    font-family: var(--font-body); font-size: 0.9rem; transition: var(--transition);
+    -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .vs-input { background-image: none; padding-right: 1rem; }
+  .vs-select:focus, .vs-input:focus { outline: none; border-color: var(--red); background: rgba(212,25,42,0.08); }
+  .vs-select:disabled { opacity: 0.4; cursor: not-allowed; }
+  .vs-select option { background: var(--navy); color: var(--white); }
+  .vs-result {
+    margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: 4px;
+    background: rgba(212,25,42,0.1); border: 1px solid rgba(212,25,42,0.3);
+    display: flex; align-items: center; gap: 0.75rem;
+    display: none;
+  }
+  .vs-result.show { display: flex; }
+  .vs-result-icon { width: 32px; height: 32px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vs-result-icon svg { width: 16px; height: 16px; fill: var(--white); }
+  .vs-result-text { font-size: 0.95rem; color: var(--white); }
+  .vs-result-text strong { font-weight: 600; }
+  .vs-manual { display: none; margin-top: 1rem; }
+  .vs-manual.show { display: block; }
+  .vs-manual-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+  .vs-manual-note::before { content: '⚠'; font-size: 0.75rem; opacity: 0.7; }
+  .vs-status { font-size: 0.78rem; color: rgba(255,255,255,0.45); min-height: 1.2em; margin-top: 0.35rem; }
+  .vs-status.loading { color: rgba(255,165,0,0.7); }
+  .vs-status.error { color: rgba(255,100,100,0.7); }
+
+  /* ===== QUOTE FORM ===== */
+  .quote-form-wrap {
+    background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 2rem; grid-column: 1 / -1;
+  }
+  .quote-form-wrap h3 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5rem;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-control {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06);
+    color: var(--white); font-family: var(--font-body); font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  .form-control::placeholder { color: rgba(255,255,255,0.3); }
+  .form-control:focus { outline: none; border-color: var(--red); background: rgba(212,25,42,0.06); }
+  select.form-control {
+    -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  select.form-control option { background: var(--navy); }
+  textarea.form-control { resize: vertical; min-height: 110px; }
+  .form-submit { margin-top: 1.25rem; }
+  .form-success {
+    display: none; padding: 1rem; border-radius: 4px; background: rgba(0,180,100,0.1);
+    border: 1px solid rgba(0,180,100,0.3); color: #5dffa0; font-size: 0.9rem; margin-top: 1rem;
+  }
+  .form-success.show { display: block; }
+
+  /* ===== FAQ ===== */
+  #faq { background: var(--off-white); }
+  .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--gray-light); background: var(--white);
+    border-radius: 4px; margin-bottom: 0.5rem; overflow: hidden;
+  }
+  .faq-q {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 1.5rem; font-weight: 600; font-size: 0.95rem; text-align: left;
+    color: var(--navy); cursor: pointer; background: none; transition: var(--transition);
+  }
+  .faq-q:hover { color: var(--red); }
+  .faq-icon {
+    width: 22px; height: 22px; background: var(--gray-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: var(--transition);
+  }
+  .faq-icon svg { width: 10px; height: 10px; fill: var(--text-muted); transition: var(--transition); }
+  .faq-item.open .faq-icon { background: var(--red); }
+  .faq-item.open .faq-icon svg { fill: var(--white); transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; }
+  .faq-a-inner { padding: 0 1.5rem 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials { background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+  .testi-card {
+    background: var(--off-white); border: 1px solid var(--gray-light);
+    border-radius: 8px; padding: 1.75rem; position: relative;
+  }
+  .testi-stars { color: var(--red); font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+    color: var(--white); flex-shrink: 0;
+  }
+  .testi-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+  .testi-location { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ===== TIRES PAGE ===== */
+  .tire-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+  .tire-card {
+    background: var(--navy); color: var(--white); border-radius: 6px;
+    padding: 2rem; position: relative; overflow: hidden;
+    transition: var(--transition);
+  }
+  .tire-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .tire-card-accent {
+    position: absolute; top: -20px; right: -20px; width: 80px; height: 80px;
+    background: var(--red); border-radius: 50%; opacity: 0.15;
+  }
+  .tire-card-icon {
+    width: 48px; height: 48px; background: rgba(212,25,42,0.15);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .tire-card-icon svg { width: 24px; height: 24px; fill: var(--red); }
+  .tire-card h3 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; color: var(--white);
+  }
+  .tire-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+  .brands-section { margin-top: 1rem; }
+  .brands-title {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy);
+    margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .brands-title::after { content: ''; flex: 1; height: 1px; background: var(--gray-light); }
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--gray-light); border: 1px solid var(--gray-light); border-radius: 6px; overflow: hidden; }
+  .brand-logo {
+    background: var(--white); padding: 1.75rem 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  .brand-logo:hover { background: var(--off-white); }
+  .brand-name {
+    font-family: var(--font-display); font-weight: 800; font-size: 1.35rem;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); opacity: 0.6;
+    transition: var(--transition);
+  }
+  .brand-logo:hover .brand-name { opacity: 1; color: var(--red); }
+
+  /* ===== LUBE PAGE ===== */
+  .lube-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .lube-card {
+    border: 1px solid var(--gray-light); border-radius: 8px; overflow: hidden;
+    transition: var(--transition); background: var(--white);
+  }
+  .lube-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--red); }
+  .lube-card-top { background: var(--navy); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .lube-card-top-icon { width: 44px; height: 44px; background: rgba(212,25,42,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .lube-card-top-icon svg { width: 22px; height: 22px; fill: var(--red); }
+  .lube-card-top h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--white); }
+  .lube-card-body { padding: 1.5rem; }
+  .lube-card-body p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+  .lube-features { display: flex; flex-direction: column; gap: 0.4rem; }
+  .lube-feature {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem; color: var(--text);
+  }
+  .lube-feature::before {
+    content: ''; width: 16px; height: 16px; background: rgba(212,25,42,0.1);
+    border-radius: 50%; flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7' stroke='%23D4192A' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+  }
+
+  /* ===== CONTACT PAGE ===== */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
+  .contact-info { background: var(--navy); border-radius: 8px; padding: 2.5rem; color: var(--white); }
+  .contact-info h2 { font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.5rem; }
+  .contact-info > p { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; line-height: 1.65; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 0.85rem; margin-bottom: 1.5rem; }
+  .contact-detail-icon { width: 38px; height: 38px; background: rgba(212,25,42,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-detail-icon svg { width: 17px; height: 17px; fill: var(--red); }
+  .contact-detail-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+  .contact-detail-value { font-size: 0.92rem; font-weight: 500; color: var(--white); }
+  .contact-areas { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .contact-areas h4 { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .contact-areas-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .contact-area-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); font-size: 0.78rem; padding: 0.25rem 0.7rem; border-radius: 3px; }
+  .contact-form-wrap { background: var(--white); border: 1px solid var(--gray-light); border-radius: 8px; padding: 2.5rem; }
+  .contact-form-wrap h2 { font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--navy); margin-bottom: 0.5rem; }
+  .contact-form-wrap > p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 2rem; }
+  .contact-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .contact-form-group.full { grid-column: 1 / -1; }
+  .contact-form-group label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .contact-fc {
+    width: 100%; padding: 0.75rem 1rem; border-radius: 4px;
+    border: 1px solid var(--gray-light); background: var(--off-white);
+    color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  .contact-fc::placeholder { color: var(--gray); }
+  .contact-fc:focus { outline: none; border-color: var(--red); background: rgba(212,25,42,0.03); }
+  select.contact-fc {
+    -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A93A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    background-color: var(--off-white); padding-right: 2.5rem;
+  }
+  textarea.contact-fc { resize: vertical; min-height: 120px; }
+  .contact-vehicle-box { grid-column: 1 / -1; background: var(--off-white); border: 1px solid var(--gray-light); border-radius: 6px; padding: 1.25rem; }
+  .contact-vehicle-box .cvb-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .contact-vehicle-box .cvb-label::after { content: 'AUTO-FILLED FROM SELECTOR'; font-size: 0.65rem; background: rgba(212,25,42,0.1); color: var(--red); padding: 0.15rem 0.4rem; border-radius: 3px; }
+  .cvb-selects { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+  .cvb-select, .cvb-input {
+    width: 100%; padding: 0.65rem 1rem; border-radius: 4px;
+    border: 1px solid var(--gray-light); background: var(--white);
+    color: var(--text); font-family: var(--font-body); font-size: 0.88rem;
+    transition: var(--transition); -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A93A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem;
+  }
+  .cvb-input { background-image: none; padding-right: 1rem; }
+  .cvb-select:focus, .cvb-input:focus { outline: none; border-color: var(--red); }
+  .cvb-select:disabled { opacity: 0.45; cursor: not-allowed; }
+  .cvb-select option { background: var(--white); }
+  .cvb-status { font-size: 0.75rem; color: var(--gray); margin-top: 0.5rem; min-height: 1.1em; }
+  .cvb-status.loading { color: darkorange; }
+  .cvb-status.error { color: var(--red); }
+  .cvb-result { margin-top: 0.75rem; padding: 0.6rem 1rem; border-radius: 4px; background: rgba(212,25,42,0.06); border: 1px solid rgba(212,25,42,0.2); font-size: 0.88rem; color: var(--navy); display: none; }
+  .cvb-result.show { display: flex; align-items: center; gap: 0.5rem; }
+  .cvb-result strong { font-weight: 600; }
+  .cvb-manual { display: none; margin-top: 0.75rem; }
+  .cvb-manual.show { display: block; }
+  .cvb-manual-note { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy); color: var(--white);
+    border-top: 3px solid var(--red);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .logo-main { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--white); display: block; margin-bottom: 0.25rem; }
+  .footer-brand .logo-main span { color: var(--red); }
+  .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; line-height: 1.7; max-width: 320px; }
+  .footer-badge { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; background: rgba(212,25,42,0.1); border: 1px solid rgba(212,25,42,0.3); padding: 0.4rem 0.9rem; border-radius: 3px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.06em; }
+  .footer-badge::before { content: '●'; color: var(--red); font-size: 0.5rem; animation: pulse-badge 2s ease-in-out infinite; }
+  .footer-col h4 { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; }
+  .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul li { font-size: 0.85rem; color: rgba(255,255,255,0.5); cursor: pointer; transition: var(--transition); }
+  .footer-col ul li:hover { color: var(--white); padding-left: 4px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .footer-email { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+  .footer-email a { color: var(--red); transition: var(--transition); }
+  .footer-email a:hover { color: var(--red-light); }
+
+  /* ===== PAGE HERO (inner pages) ===== */
+  .page-hero {
+    background: var(--navy); padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
+  }
+  .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); }
+  .page-hero-inner { max-width: 1200px; margin: 0 auto; }
+  .page-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4rem); text-transform: uppercase; color: var(--white); letter-spacing: 0.02em; line-height: 0.95; }
+  .page-hero h1 span { color: var(--red); }
+  .page-hero p { color: rgba(255,255,255,0.55); font-size: 1rem; margin-top: 0.75rem; max-width: 520px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .nav-links, .nav-badge { display: none; }
+    .nav-hamburger { display: flex; }
+    .quote-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .contact-form-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .vs-selects { grid-template-columns: 1fr; }
+    .cvb-selects { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .section { padding: 4rem 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    .hero-btns { flex-direction: column; }
+    .btn { text-align: center; justify-content: center; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  
+  /* ===== SERVICES HEADER WITH LOGO ===== */
+  .services-header-wrap {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+  .services-logo-block {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    background: var(--navy);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+    overflow: hidden;
+    padding: 12px;
+  }
+  .services-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .services-header-text { flex: 1; }
+  @media (max-width: 700px) {
+    .services-header-wrap {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .services-logo-block { width: 130px; height: 130px; }
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== ACTIVE NAV ===== */
+  .nav-links a.active { color: var(--white); border-bottom: 2px solid var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <span class="logo-main"><span>X</span>press Lube &amp; Tires</span>
+      <span class="logo-sub">Services Inc. &mdash; Brampton &amp; Area</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+      <a onclick="showPage('tires')" id="nav-tires">Tires</a>
+      <a onclick="showPage('lube')" id="nav-lube">Lube &amp; Services</a>
+      <a onclick="showPage('contact')" id="nav-contact">Contact</a>
+      <span class="nav-badge">Open 24/7</span>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a onclick="showPage('home');closeMobileMenu()">Home</a>
+    <a onclick="showPage('tires');closeMobileMenu()">Tires</a>
+    <a onclick="showPage('lube');closeMobileMenu()">Lube &amp; Services</a>
+    <a onclick="showPage('contact');closeMobileMenu()">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-red-stripe"></div>
+    <svg class="hero-gear" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="white" d="M100 30 L112 55 L140 48 L135 76 L160 90 L140 108 L148 136 L122 132 L112 158 L88 145 L68 165 L60 138 L34 136 L40 108 L18 92 L42 76 L38 48 L64 55 Z M100 72 A28 28 0 1 0 100 128 A28 28 0 0 0 100 72 Z"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span class="hero-eyebrow-text">Now Serving Brampton &amp; Surrounding Areas</span>
+      </div>
+      <h1 class="hero-title">
+        24/7 Mobile<br>
+        <span class="line2">Tire &amp; Lube</span><br>
+        Services
+      </h1>
+      <p class="hero-desc">We come to <em>you</em> — at home, at work, or on the road. Professional automotive services available around the clock across Brampton, Mississauga, Caledon, and beyond.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="scrollToQuote()">&#128197; Get Your Free Quote</button>
+        <button class="btn btn-outline" onclick="showPage('contact')">Contact Us &rarr;</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">24<span>/7</span></div>
+          <div class="hero-stat-label">Always Available</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">7<span>+</span></div>
+          <div class="hero-stat-label">Cities Served</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100<span>%</span></div>
+          <div class="hero-stat-label">Mobile Service</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">0<span>$</span></div>
+          <div class="hero-stat-label">Travel Charge</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALERT BAR -->
+  <div class="alert-bar">
+    &#128222; Emergency Tire Service Available Now <span>|</span> Open 24 Hours <span>|</span> Brampton &amp; All Nearby Areas
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header services-header-wrap">
+        <div class="services-logo-block">
+          <img src="logo final sticker.png" alt="Xpress Lube and Tires Logo" class="services-logo-img"/>
+        </div>
+        <div class="services-header-text">
+          <div class="section-tag">What We Do</div>
+          <h2 class="section-title">Full-Service <span>Auto Care</span><br>At Your Location</h2>
+          <p class="section-subtitle">From flat tires at 3am to routine oil changes — we bring the shop to your driveway.</p>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#D4192A" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="7" stroke="#D4192A" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="#D4192A" stroke-width="2"/><line x1="3" y1="12" x2="7" y2="12" stroke="#D4192A" stroke-width="2"/><line x1="17" y1="12" x2="21" y2="12" stroke="#D4192A" stroke-width="2"/></svg></div>
+          <h3>Tire Installation</h3>
+          <p>Mobile tire mounting and balancing done right at your location. All vehicle types supported — sedans to SUVs.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#D4192A"/><path d="M2 17l10 5 10-5" stroke="#D4192A" stroke-width="2" fill="none"/><path d="M2 12l10 5 10-5" stroke="#D4192A" stroke-width="2" fill="none"/></svg></div>
+          <h3>Flat Tire Repair</h3>
+          <p>Stuck on the side of the road? We dispatch immediately. Patch, plug or full replacement — fast service 24/7.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#D4192A" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Oil &amp; Filter Change</h3>
+          <p>Conventional, synthetic, or high-mileage oils. Fresh filter, fluid top-ups, and multi-point inspection included.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#D4192A" opacity="0.2" stroke="#D4192A" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#D4192A" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Seasonal Tire Swap</h3>
+          <p>Summer to winter changeover and vice versa. We store, mount, and balance — all without you visiting a shop.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#D4192A" stroke-width="2" fill="none"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#D4192A" stroke-width="2" fill="none"/></svg></div>
+          <h3>Tire Rotation</h3>
+          <p>Extend tire life and ensure even wear with scheduled rotation. We cross-rotate and check pressure at the same time.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" stroke="#D4192A" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="3" fill="#D4192A"/></svg></div>
+          <h3>We Come to You</h3>
+          <p>Fully mobile service across Brampton, Mississauga, Caledon, Burlington, Oakville, Vaughan &amp; Orangeville.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(212,25,42,0.2);">Why Xpress</div>
+        <h2 class="section-title" style="color:var(--white);">Built Different.<br>Serving <span>You</span> Better.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="why-num">01</div>
+          <h3>Truly 24/7</h3>
+          <p>Day, night, weekends, holidays. When you need us, we're available. No voicemail — real people, real help.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">02</div>
+          <h3>Zero Overhead</h3>
+          <p>No shop rent means savings passed to you. Competitive pricing on every service, every time.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">03</div>
+          <h3>Fast Dispatch</h3>
+          <p>We prioritize emergencies. Most calls result in dispatch within the hour. Your time matters.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">04</div>
+          <h3>Certified Techs</h3>
+          <p>Experienced automotive professionals with proper tools — not a workaround, a full professional service.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">05</div>
+          <h3>Your Location</h3>
+          <p>Home, office, parking lot — anywhere in our service area. Absolute convenience, guaranteed.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">06</div>
+          <h3>Transparent Pricing</h3>
+          <p>No hidden fees. No pressure upsells. Get a quote, approve it, we do the work. Simple.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET A QUOTE + VEHICLE SELECTOR -->
+  <section class="section" id="quote">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag" style="background:rgba(212,25,42,0.2); color:var(--red);">Free Quote</div>
+        <h2 class="section-title" style="color:var(--white);">Select Your Vehicle<br><span>Get a Quote</span></h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">Tell us your vehicle and what you need — we'll get back to you fast with a no-obligation quote.</p>
+      </div>
+
+      <!-- Vehicle Selector -->
+      <div class="vehicle-selector-box reveal">
+        <h3>&#128663; Step 1 — Select Your Vehicle</h3>
+        <p>Choose your vehicle year, make, and model from the dropdowns below.</p>
+        <div class="vs-selects">
+          <div class="vs-group">
+            <label>Year</label>
+            <select class="vs-select" id="vs-year" onchange="vsYearChanged()">
+              <option value="">-- Select Year --</option>
+            </select>
+          </div>
+          <div class="vs-group">
+            <label>Make</label>
+            <select class="vs-select" id="vs-make" disabled onchange="vsMakeChanged()">
+              <option value="">-- Select Make --</option>
+            </select>
+            <div class="vs-status" id="vs-make-status"></div>
+          </div>
+          <div class="vs-group">
+            <label>Model</label>
+            <select class="vs-select" id="vs-model" disabled onchange="vsModelChanged()">
+              <option value="">-- Select Model --</option>
+            </select>
+            <div class="vs-status" id="vs-model-status"></div>
+          </div>
+        </div>
+        <div class="vs-result" id="vs-result">
+          <div class="vs-result-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+          <div class="vs-result-text">Selected Vehicle: <strong id="vs-result-text">—</strong></div>
+        </div>
+        <div class="vs-manual" id="vs-manual">
+          <div class="vs-manual-note">API unavailable — please enter your vehicle manually:</div>
+          <input type="text" class="vs-input" id="vs-manual-input" placeholder="e.g. 2019 Honda Civic" oninput="vsManualInput()"/>
+        </div>
+      </div>
+
+      <!-- Quote Form -->
+      <div class="quote-form-wrap reveal" style="margin-top:1.5rem;">
+        <h3>&#128203; Step 2 — Request Your Quote</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" placeholder="John Smith"/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" class="form-control" placeholder="(905) 555-0100"/>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="you@example.com"/>
+          </div>
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select class="form-control">
+              <option value="">-- Select Service --</option>
+              <option>Flat Tire Repair</option>
+              <option>Tire Installation</option>
+              <option>Seasonal Tire Swap</option>
+              <option>Tire Rotation</option>
+              <option>Oil &amp; Filter Change</option>
+              <option>Synthetic Oil Change</option>
+              <option>Air Filter Replacement</option>
+              <option>Wiper Blade Replacement</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Selected Vehicle</label>
+            <input type="text" class="form-control" id="quote-vehicle-field" placeholder="Select vehicle above or type manually" readonly style="background:rgba(255,255,255,0.04); cursor:default;"/>
+          </div>
+          <div class="form-group full">
+            <label>Additional Notes</label>
+            <textarea class="form-control" rows="3" placeholder="Any additional details about your vehicle or situation..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button class="btn btn-primary" onclick="submitQuoteForm()">&#128161; Submit Quote Request</button>
+        </div>
+        <div class="form-success" id="quote-success">
+          &#10003; Your quote request has been received! We'll contact you within the hour. For urgent service, call us directly.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS WE SERVE -->
+  <section class="section" id="areas" style="background:var(--off-white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Service Area</div>
+        <h2 class="section-title">Areas We <span>Serve</span></h2>
+        <p class="section-subtitle">We cover Brampton and all surrounding communities. Can't find your city? Call us — we may still be able to help.</p>
+      </div>
+      <div class="areas-wrap">
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Brampton (Primary)</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Mississauga</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Caledon</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Burlington</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Oakville</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Vaughan</div>
+        <div class="area-pill"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Orangeville</div>
+      </div>
+      <p class="areas-note">&#128222; Not listed? Call us — coverage may extend to your location.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-tag">Reviews</div>
+        <h2 class="section-title">Trusted By <span>Drivers</span><br>Across The Region</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"Got a flat at midnight on the 410. Called Xpress Lube and they were there in under 45 minutes. Amazing service, very professional."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MK</div>
+            <div>
+              <div class="testi-name">Mike K.</div>
+              <div class="testi-location">Brampton, ON</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"Did my seasonal tire swap in my driveway. No driving to a shop, no waiting. Price was fair and the tech was friendly and efficient."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SR</div>
+            <div>
+              <div class="testi-name">Sarah R.</div>
+              <div class="testi-location">Mississauga, ON</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"I've been using Xpress for all my oil changes now. Easier than any shop I've used. Booked through the website and they came next morning."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DJ</div>
+            <div>
+              <div class="testi-name">David J.</div>
+              <div class="testi-location">Vaughan, ON</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:var(--off-white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2 class="section-title">Common <span>Questions</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How quickly can you arrive? <div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">For emergency services, we typically dispatch within 30–60 minutes depending on location and current demand. Scheduled services can often be accommodated same-day or next morning.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you charge extra for late-night calls? <div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We are transparent with all pricing upfront. Emergency after-hours surcharges may apply for calls between midnight and 5am. We will always communicate the full cost before starting any work.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What areas do you cover? <div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We primarily serve Brampton and the surrounding areas: Mississauga, Caledon, Burlington, Oakville, Vaughan, and Orangeville. Contact us if you're outside this range — we may still be able to help.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you carry tire inventory? <div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — we carry a selection of common sizes from major brands. For specific tires, we can source them quickly. Tell us your vehicle and tire needs when booking and we'll confirm availability.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What payment methods do you accept? <div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We accept cash, Interac e-Transfer, and major credit cards. Payment is collected after the service is completed to your satisfaction.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ===== TIRES PAGE ===== -->
+<div id="page-tires" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-tag" style="background:rgba(212,25,42,0.2);">Mobile Tire Services</div>
+      <h1>Tire <span>Solutions</span><br>At Your Door</h1>
+      <p>Professional tire services for every vehicle — when and where you need them, 24 hours a day.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Services</div>
+        <h2 class="section-title">Our <span>Tire</span> Services</h2>
+      </div>
+      <div class="tire-services-grid">
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><circle cx="12" cy="12" r="9" stroke="#D4192A" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="3.5" fill="#D4192A"/></svg></div>
+          <h3>Flat Tire Repair</h3>
+          <p>Puncture plug, patch repair, or full replacement. We assess the damage and give you the honest recommendation. Available 24/7, dispatched fast.</p>
+        </div>
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#D4192A"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#D4192A" stroke-width="2" fill="none"/></svg></div>
+          <h3>Tire Installation</h3>
+          <p>New tires mounted, balanced, and inflated to spec. Wheel torqued to manufacturer standards. Works for all passenger vehicles, trucks, and vans.</p>
+        </div>
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16M4 6l8 8 8-8M4 18l8-8 8 8" stroke="#D4192A" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+          <h3>Seasonal Tire Swap</h3>
+          <p>Summer to winter, winter to summer — we handle it all at your driveway. We bring the equipment, you just hand us the keys.</p>
+        </div>
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z" fill="#D4192A"/></svg></div>
+          <h3>Tire Rotation</h3>
+          <p>Extend the life of your tires with scheduled rotation. We move tires to balance wear patterns and inspect tread depth at no extra charge.</p>
+        </div>
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#D4192A" stroke-width="2" fill="none"/></svg></div>
+          <h3>TPMS Service</h3>
+          <p>Tire Pressure Monitoring System sensor reset, replacement, and programming after every tire service. We keep your dashboard warning lights off.</p>
+        </div>
+        <div class="tire-card reveal">
+          <div class="tire-card-accent"></div>
+          <div class="tire-card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="#D4192A" stroke-width="2" fill="none"/><path d="M21 21l-4.35-4.35" stroke="#D4192A" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Tire Inspection</h3>
+          <p>Safety check on all four tires — tread depth measurement, sidewall inspection, pressure check, and written report. Peace of mind before any road trip.</p>
+        </div>
+      </div>
+
+      <!-- Tire Brands -->
+      <div class="brands-section reveal">
+        <div class="brands-title">Brands We Work With</div>
+        <div class="brands-grid">
+          <div class="brand-logo"><span class="brand-name">Michelin</span></div>
+          <div class="brand-logo"><span class="brand-name">Goodyear</span></div>
+          <div class="brand-logo"><span class="brand-name">BFGoodrich</span></div>
+          <div class="brand-logo"><span class="brand-name">Bridgestone</span></div>
+          <div class="brand-logo"><span class="brand-name">Firestone</span></div>
+          <div class="brand-logo"><span class="brand-name">Continental</span></div>
+          <div class="brand-logo"><span class="brand-name">Pirelli</span></div>
+          <div class="brand-logo"><span class="brand-name">Hankook</span></div>
+          <div class="brand-logo"><span class="brand-name">Kumho</span></div>
+          <div class="brand-logo"><span class="brand-name">General</span></div>
+          <div class="brand-logo"><span class="brand-name">Cooper</span></div>
+          <div class="brand-logo"><span class="brand-name">Yokohama</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-tires -->
+
+<!-- ===== LUBE & SERVICES PAGE ===== -->
+<div id="page-lube" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-tag" style="background:rgba(212,25,42,0.2);">Maintenance Services</div>
+      <h1>Lube &amp; <span>Other</span><br>Services</h1>
+      <p>Full-spectrum mobile maintenance — from oil changes to wiper blades, we've got you covered.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">All Services</div>
+        <h2 class="section-title">Everything Your <span>Vehicle</span> Needs</h2>
+        <p class="section-subtitle">We handle the essentials so your vehicle runs smoothly — all without you visiting a shop.</p>
+      </div>
+      <div class="lube-grid">
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/></svg></div>
+            <h3>Conventional Oil Change</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Standard mineral oil change with new OEM-compatible filter. Best for older vehicles or those not requiring synthetic. Includes fluid top-ups and visual inspection.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Drain &amp; refill conventional oil</div>
+              <div class="lube-feature">New oil filter installed</div>
+              <div class="lube-feature">Washer fluid, coolant, brake fluid top-up</div>
+              <div class="lube-feature">Tire pressure check</div>
+              <div class="lube-feature">Multi-point visual inspection</div>
+            </div>
+          </div>
+        </div>
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+            <h3>Synthetic Oil Change</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Full synthetic oil for maximum engine protection. Required for most modern vehicles, turbocharged engines, and performance cars. Longer intervals between changes.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Full synthetic oil (5W-30, 5W-40, 0W-20 etc.)</div>
+              <div class="lube-feature">Premium filter installed</div>
+              <div class="lube-feature">All fluids checked &amp; topped</div>
+              <div class="lube-feature">OBD2 reset if applicable</div>
+              <div class="lube-feature">Oil life monitor reset</div>
+            </div>
+          </div>
+        </div>
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M3 3h18v18H3z" opacity="0.2"/><path d="M3 9h18M9 3v18" stroke="#D4192A" stroke-width="2"/></svg></div>
+            <h3>Air Filter Replacement</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Engine and cabin air filters replaced on-site. A clean air filter improves fuel economy, reduces emissions, and protects your engine from contaminants.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Engine air filter replacement</div>
+              <div class="lube-feature">Cabin air filter replacement</div>
+              <div class="lube-feature">Filter condition inspection before/after</div>
+              <div class="lube-feature">All makes and models</div>
+            </div>
+          </div>
+        </div>
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M12 2L2 12l4 4 2-2 8 8 4-4L12 2zM9 17l-2-2 9-9 2 2-9 9z"/></svg></div>
+            <h3>Wiper Blade Replacement</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Fresh wiper blades for clear visibility in rain, snow, and ice. Quick install — we carry universal sizes for most vehicles and can source beam blades on request.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Driver &amp; passenger wiper replaced</div>
+              <div class="lube-feature">Rear wiper replacement available</div>
+              <div class="lube-feature">Blade quality options available</div>
+              <div class="lube-feature">Tested before we leave</div>
+            </div>
+          </div>
+        </div>
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <h3>Battery Service</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Battery testing, terminal cleaning, and replacement. Perfect if your car won't start or if you've had repeated jump starts. We carry common group sizes.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Battery load test &amp; CCA check</div>
+              <div class="lube-feature">Terminal cleaning &amp; anti-corrosion treatment</div>
+              <div class="lube-feature">Battery replacement (if needed)</div>
+              <div class="lube-feature">Charging system check</div>
+            </div>
+          </div>
+        </div>
+        <div class="lube-card reveal">
+          <div class="lube-card-top">
+            <div class="lube-card-top-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <h3>Fluid Top-Up Service</h3>
+          </div>
+          <div class="lube-card-body">
+            <p>Comprehensive fluid service covering all critical vehicle fluids. Prevents overheating, brake failure, and transmission issues between major services.</p>
+            <div class="lube-features">
+              <div class="lube-feature">Engine coolant / antifreeze</div>
+              <div class="lube-feature">Brake fluid check &amp; top-up</div>
+              <div class="lube-feature">Power steering fluid</div>
+              <div class="lube-feature">Windshield washer fluid</div>
+              <div class="lube-feature">Transmission fluid check</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-lube -->
+
+<!-- ===== CONTACT PAGE ===== -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-tag" style="background:rgba(212,25,42,0.2);">Get In Touch</div>
+      <h1>Contact <span>Us</span></h1>
+      <p>Book a service, request a quote, or ask a question. We respond fast — day or night.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-wrap">
+        <!-- Contact Info -->
+        <div class="contact-info reveal">
+          <h2>Xpress Lube &amp; Tires</h2>
+          <p>Mobile auto services available 24 hours a day, 7 days a week across Brampton and surrounding communities.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f39a9d959cb38b83819680809f869196929d97879a819680dd909c9e">[email&#160;protected]</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value">(Call / Text) Available 24/7</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Service Type</div>
+              <div class="contact-detail-value">Mobile Only — We Come to You</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="#D4192A"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Hours</div>
+              <div class="contact-detail-value">Open 24 Hours / 7 Days a Week</div>
+            </div>
+          </div>
+
+          <div class="contact-areas">
+            <h4>Areas Served</h4>
+            <div class="contact-areas-list">
+              <span class="contact-area-tag">Brampton</span>
+              <span class="contact-area-tag">Mississauga</span>
+              <span class="contact-area-tag">Caledon</span>
+              <span class="contact-area-tag">Burlington</span>
+              <span class="contact-area-tag">Oakville</span>
+              <span class="contact-area-tag">Vaughan</span>
+              <span class="contact-area-tag">Orangeville</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrap reveal">
+          <h2>Send a Message</h2>
+          <p>Fill out the form and we'll get back to you within the hour. For emergencies, please call directly.</p>
+
+          <div class="contact-form-grid">
+            <div class="contact-form-group">
+              <label>Full Name *</label>
+              <input type="text" class="contact-fc" placeholder="Your full name" id="cf-name"/>
+            </div>
+            <div class="contact-form-group">
+              <label>Phone Number *</label>
+              <input type="tel" class="contact-fc" placeholder="(905) 555-0100" id="cf-phone"/>
+            </div>
+            <div class="contact-form-group">
+              <label>Email Address</label>
+              <input type="email" class="contact-fc" placeholder="you@email.com" id="cf-email"/>
+            </div>
+            <div class="contact-form-group">
+              <label>Service Needed</label>
+              <select class="contact-fc" id="cf-service">
+                <option value="">-- Select Service --</option>
+                <option>Flat Tire Repair (Emergency)</option>
+                <option>Tire Installation</option>
+                <option>Seasonal Tire Swap</option>
+                <option>Tire Rotation</option>
+                <option>Oil &amp; Filter Change (Conventional)</option>
+                <option>Oil &amp; Filter Change (Synthetic)</option>
+                <option>Air Filter Replacement</option>
+                <option>Wiper Blade Replacement</option>
+                <option>Battery Service</option>
+                <option>Fluid Top-Up</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+
+            <!-- Vehicle Selector in Contact Form -->
+            <div class="contact-form-group contact-vehicle-box">
+              <div class="cvb-label">Your Vehicle</div>
+              <div class="cvb-selects">
+                <div>
+                  <select class="cvb-select" id="cvb-year" onchange="cvbYearChanged()">
+                    <option value="">-- Year --</option>
+                  </select>
+                </div>
+                <div>
+                  <select class="cvb-select" id="cvb-make" disabled onchange="cvbMakeChanged()">
+                    <option value="">-- Make --</option>
+                  </select>
+                </div>
+                <div>
+                  <select class="cvb-select" id="cvb-model" disabled onchange="cvbModelChanged()">
+                    <option value="">-- Model --</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cvb-status" id="cvb-status"></div>
+              <div class="cvb-result" id="cvb-result">
+                <span>&#10003;</span> <strong id="cvb-result-text">—</strong>
+              </div>
+              <div class="cvb-manual" id="cvb-manual">
+                <div class="cvb-manual-note">Or enter manually (Year Make Model):</div>
+                <input type="text" class="contact-fc" id="cvb-manual-input" placeholder="e.g. 2020 Toyota Corolla" oninput="cvbManualInput()" style="margin-top:0.35rem;"/>
+              </div>
+              <input type="hidden" id="cf-vehicle" value=""/>
+            </div>
+
+            <div class="contact-form-group full">
+              <label>Location / Address</label>
+              <input type="text" class="contact-fc" placeholder="Where should we come?" id="cf-location"/>
+            </div>
+            <div class="contact-form-group full">
+              <label>Message</label>
+              <textarea class="contact-fc" rows="4" placeholder="Describe your issue or any details that would help us..." id="cf-message"></textarea>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <button class="btn btn-primary" onclick="submitContactForm()">Send Message &rarr;</button>
+          </div>
+          <div class="form-success" id="contact-success">
+            &#10003; Message sent! We'll reach out to you as soon as possible. Thank you for choosing Xpress Lube and Tires.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-contact -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-main"><span>X</span>press Lube &amp; Tires Services Inc.</span>
+        <p>Professional mobile automotive services across Brampton and surrounding areas. Available 24 hours a day, 7 days a week — we come to you.</p>
+        <div class="footer-badge">Open 24/7 — Ready to Help</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('tires')">Tire Services</li>
+          <li onclick="showPage('lube')">Lube &amp; Services</li>
+          <li onclick="showPage('contact')">Contact Us</li>
+          <li onclick="scrollToQuote()">Get a Quote</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li>Brampton</li>
+          <li>Mississauga</li>
+          <li>Caledon</li>
+          <li>Burlington</li>
+          <li>Oakville</li>
+          <li>Vaughan</li>
+          <li>Orangeville</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Xpress Lube and Tires Services Inc. All rights reserved.</div>
+      <div class="footer-email">Email: <a href="/cdn-cgi/l/email-protection#234a4d454c635b53514650504f564146424d47574a5146500d404c4e"><span class="__cf_email__" data-cfemail="bcd5d2dad3fcc4ccced9cfcfd0c9ded9ddd2d8c8d5ced9cf92dfd3d1">[email&#160;protected]</span></a></div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   PAGE NAVIGATION
+   ============================================================ */
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + pageId);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Re-run reveal for new page
+  setTimeout(runReveal, 100);
+  // Populate years when contact page loads
+  if (pageId === 'contact') populateCvbYears();
+}
+
+function scrollToQuote() {
+  showPage('home');
+  setTimeout(() => {
+    const el = document.getElementById('quote');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 200);
+}
+
+/* ============================================================
+   NAVBAR: SCROLL + HAMBURGER
+   ============================================================ */
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+function runReveal() {
+  const reveals = document.querySelectorAll('.reveal:not(.visible)');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+}
+runReveal();
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ============================================================
+   VEHICLE SELECTOR — SHARED LOGIC
+   Uses NHTSA API (free, CORS-compatible, no key required)
+   Endpoint: https://vpic.nhtsa.dot.gov/api/
+   Fallback: manual text input
+   ============================================================ */
+const NHTSA_BASE = 'https://vpic.nhtsa.dot.gov/api/vehicles';
+const YEARS = [];
+for (let y = 2026; y >= 1990; y--) YEARS.push(y);
+
+/* === Helper: populate a select with options === */
+function populateSelect(selectEl, items, placeholder) {
+  selectEl.innerHTML = `<option value="">${placeholder}</option>`;
+  items.forEach(item => {
+    const opt = document.createElement('option');
+    opt.value = item.value;
+    opt.textContent = item.label;
+    selectEl.appendChild(opt);
+  });
+}
+
+/* === Fetch makes from NHTSA === */
+async function fetchMakes(year) {
+  const url = `${NHTSA_BASE}/GetMakesForVehicleType/car?year=${year}&format=json`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Network error');
+  const data = await res.json();
+  const results = data.Results;
+  if (!results || results.length === 0) {
+    // Fallback to all makes
+    const url2 = `${NHTSA_BASE}/GetAllMakes?format=json`;
+    const res2 = await fetch(url2);
+    const data2 = await res2.json();
+    return data2.Results.slice(0, 80).map(m => ({ value: m.Make_Name, label: m.Make_Name }));
+  }
+  return results.map(m => ({ value: m.MakeName, label: m.MakeName }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/* === Fetch models from NHTSA === */
+async function fetchModels(year, make) {
+  const url = `${NHTSA_BASE}/GetModelsForMakeYear/make/${encodeURIComponent(make)}/modelyear/${year}?format=json`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Network error');
+  const data = await res.json();
+  if (!data.Results || data.Results.length === 0) {
+    const url2 = `${NHTSA_BASE}/GetModelsForMake/${encodeURIComponent(make)}?format=json`;
+    const res2 = await fetch(url2);
+    const data2 = await res2.json();
+    return data2.Results.map(m => ({ value: m.Model_Name, label: m.Model_Name }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }
+  return data.Results.map(m => ({ value: m.Model_Name, label: m.Model_Name }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/* ============================================================
+   VEHICLE SELECTOR — HOME PAGE (vs-*)
+   ============================================================ */
+(function initHomeVS() {
+  const yearSel = document.getElementById('vs-year');
+  YEARS.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y; opt.textContent = y;
+    yearSel.appendChild(opt);
+  });
+})();
+
+let vsSelectedVehicle = '';
+
+async function vsYearChanged() {
+  const year = document.getElementById('vs-year').value;
+  const makeSel = document.getElementById('vs-make');
+  const modelSel = document.getElementById('vs-model');
+  const makeStatus = document.getElementById('vs-make-status');
+  const manualDiv = document.getElementById('vs-manual');
+
+  makeSel.innerHTML = '<option value="">-- Select Make --</option>';
+  modelSel.innerHTML = '<option value="">-- Select Model --</option>';
+  makeSel.disabled = true;
+  modelSel.disabled = true;
+  document.getElementById('vs-result').classList.remove('show');
+  manualDiv.classList.remove('show');
+
+  if (!year) return;
+
+  makeStatus.textContent = 'Loading makes...';
+  makeStatus.className = 'vs-status loading';
+
+  try {
+    const makes = await fetchMakes(year);
+    if (!makes || makes.length === 0) throw new Error('No makes found');
+    populateSelect(makeSel, makes, '-- Select Make --');
+    makeSel.disabled = false;
+    makeStatus.textContent = `${makes.length} makes loaded`;
+    makeStatus.className = 'vs-status';
+    setTimeout(() => { makeStatus.textContent = ''; }, 2000);
+  } catch (e) {
+    makeStatus.textContent = 'Could not load makes — use manual entry below.';
+    makeStatus.className = 'vs-status error';
+    manualDiv.classList.add('show');
+  }
+}
+
+async function vsMakeChanged() {
+  const year = document.getElementById('vs-year').value;
+  const make = document.getElementById('vs-make').value;
+  const modelSel = document.getElementById('vs-model');
+  const modelStatus = document.getElementById('vs-model-status');
+  const manualDiv = document.getElementById('vs-manual');
+
+  modelSel.innerHTML = '<option value="">-- Select Model --</option>';
+  modelSel.disabled = true;
+  document.getElementById('vs-result').classList.remove('show');
+  manualDiv.classList.remove('show');
+
+  if (!make) return;
+
+  modelStatus.textContent = 'Loading models...';
+  modelStatus.className = 'vs-status loading';
+
+  try {
+    const models = await fetchModels(year, make);
+    if (!models || models.length === 0) throw new Error('No models found');
+    populateSelect(modelSel, models, '-- Select Model --');
+    modelSel.disabled = false;
+    modelStatus.textContent = `${models.length} models loaded`;
+    modelStatus.className = 'vs-status';
+    setTimeout(() => { modelStatus.textContent = ''; }, 2000);
+  } catch (e) {
+    modelStatus.textContent = 'Could not load models — use manual entry below.';
+    modelStatus.className = 'vs-status error';
+    manualDiv.classList.add('show');
+  }
+}
+
+function vsModelChanged() {
+  const year = document.getElementById('vs-year').value;
+  const make = document.getElementById('vs-make').value;
+  const model = document.getElementById('vs-model').value;
+  if (!year || !make || !model) return;
+  const vehicle = `${year} ${make} ${model}`;
+  vsSetVehicle(vehicle);
+}
+
+function vsManualInput() {
+  const val = document.getElementById('vs-manual-input').value.trim();
+  if (val.length > 2) vsSetVehicle(val);
+}
+
+function vsSetVehicle(vehicle) {
+  vsSelectedVehicle = vehicle;
+  document.getElementById('vs-result-text').textContent = vehicle;
+  document.getElementById('vs-result').classList.add('show');
+  document.getElementById('quote-vehicle-field').value = vehicle;
+  // Sync to contact form too
+  document.getElementById('cf-vehicle').value = vehicle;
+}
+
+/* ============================================================
+   VEHICLE SELECTOR — CONTACT PAGE (cvb-*)
+   ============================================================ */
+function populateCvbYears() {
+  const yearSel = document.getElementById('cvb-year');
+  if (yearSel.options.length > 1) return; // already populated
+  YEARS.forEach(y => {
+    const opt = document.createElement('option');
+    opt.value = y; opt.textContent = y;
+    yearSel.appendChild(opt);
+  });
+  // If a vehicle was already selected on home page, pre-fill
+  if (vsSelectedVehicle) {
+    document.getElementById('cf-vehicle').value = vsSelectedVehicle;
+    const result = document.getElementById('cvb-result');
+    document.getElementById('cvb-result-text').textContent = vsSelectedVehicle;
+    result.classList.add('show');
+  }
+}
+
+async function cvbYearChanged() {
+  const year = document.getElementById('cvb-year').value;
+  const makeSel = document.getElementById('cvb-make');
+  const modelSel = document.getElementById('cvb-model');
+  const status = document.getElementById('cvb-status');
+  const manualDiv = document.getElementById('cvb-manual');
+
+  makeSel.innerHTML = '<option value="">-- Make --</option>';
+  modelSel.innerHTML = '<option value="">-- Model --</option>';
+  makeSel.disabled = true; modelSel.disabled = true;
+  document.getElementById('cvb-result').classList.remove('show');
+  manualDiv.classList.remove('show');
+
+  if (!year) return;
+  status.textContent = 'Loading makes...';
+  status.className = 'cvb-status loading';
+
+  try {
+    const makes = await fetchMakes(year);
+    if (!makes || makes.length === 0) throw new Error('no data');
+    populateSelect(makeSel, makes, '-- Make --');
+    makeSel.disabled = false;
+    status.textContent = '';
+    status.className = 'cvb-status';
+  } catch (e) {
+    status.textContent = 'Could not load — use manual entry below.';
+    status.className = 'cvb-status error';
+    manualDiv.classList.add('show');
+  }
+}
+
+async function cvbMakeChanged() {
+  const year = document.getElementById('cvb-year').value;
+  const make = document.getElementById('cvb-make').value;
+  const modelSel = document.getElementById('cvb-model');
+  const status = document.getElementById('cvb-status');
+  const manualDiv = document.getElementById('cvb-manual');
+
+  modelSel.innerHTML = '<option value="">-- Model --</option>';
+  modelSel.disabled = true;
+  document.getElementById('cvb-result').classList.remove('show');
+  manualDiv.classList.remove('show');
+
+  if (!make) return;
+  status.textContent = 'Loading models...';
+  status.className = 'cvb-status loading';
+
+  try {
+    const models = await fetchModels(year, make);
+    if (!models || models.length === 0) throw new Error('no data');
+    populateSelect(modelSel, models, '-- Model --');
+    modelSel.disabled = false;
+    status.textContent = '';
+    status.className = 'cvb-status';
+  } catch (e) {
+    status.textContent = 'Could not load — use manual entry below.';
+    status.className = 'cvb-status error';
+    manualDiv.classList.add('show');
+  }
+}
+
+function cvbModelChanged() {
+  const year = document.getElementById('cvb-year').value;
+  const make = document.getElementById('cvb-make').value;
+  const model = document.getElementById('cvb-model').value;
+  if (!year || !make || !model) return;
+  const vehicle = `${year} ${make} ${model}`;
+  cvbSetVehicle(vehicle);
+}
+
+function cvbManualInput() {
+  const val = document.getElementById('cvb-manual-input').value.trim();
+  if (val.length > 2) cvbSetVehicle(val);
+}
+
+function cvbSetVehicle(vehicle) {
+  document.getElementById('cvb-result-text').textContent = vehicle;
+  document.getElementById('cvb-result').classList.add('show');
+  document.getElementById('cf-vehicle').value = vehicle;
+}
+
+/* ============================================================
+   BACKEND CONFIG — change this URL if you deploy the server online
+   ============================================================ */
+const BACKEND_URL = 'http://localhost:3000';
+
+/* ============================================================
+   FORM SUBMISSIONS — connected to Node.js backend
+   ============================================================ */
+async function submitQuoteForm() {
+  const btn = document.querySelector('#quote .quote-form-wrap .btn-primary');
+  const successEl = document.getElementById('quote-success');
+
+  const name    = document.querySelector('#quote .quote-form-wrap .form-grid .form-group:nth-child(1) input').value.trim();
+  const phone   = document.querySelector('#quote .quote-form-wrap .form-grid .form-group:nth-child(2) input').value.trim();
+  const email   = document.querySelector('#quote .quote-form-wrap .form-grid .form-group:nth-child(3) input').value.trim();
+  const service = document.querySelector('#quote .quote-form-wrap .form-grid .form-group:nth-child(4) select').value;
+  const vehicle = document.getElementById('quote-vehicle-field').value.trim();
+  const notes   = document.querySelector('#quote .quote-form-wrap textarea').value.trim();
+
+  if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch(BACKEND_URL + '/send-quote', {
+      method: 'POST', headers: { 'Content-Type': 'application/json'  },
+      body: JSON.stringify({ name, phone, email, service, vehicle, notes })
+    });
+    const data = await res.json();
+    if (data.success) {
+      successEl.textContent = '✓ Quote request sent! We\'ll call you back shortly.';
+      successEl.classList.add('show'); setTimeout(() => successEl.classList.remove('show'), 8000);
+    } else { alert('Error: ' + data.message); }
+  } catch (err) {
+    alert('Network error — email us at info@xpresslubeandtires.com');
+  } finally { btn.disabled = false; btn.innerHTML = '&#128161; Submit Quote Request'; }
+}
+
+async function submitContactForm() {
+  const btn = document.querySelector('.contact-form-wrap .btn-primary');
+  const successEl = document.getElementById('contact-success');
+
+  const name     = document.getElementById('cf-name').value.trim();
+  const phone    = document.getElementById('cf-phone').value.trim();
+  const email    = document.getElementById('cf-email').value.trim();
+  const service  = document.getElementById('cf-service').value;
+  const vehicle  = document.getElementById('cf-vehicle').value.trim();
+  const location = document.getElementById('cf-location').value.trim();
+  const message  = document.getElementById('cf-message').value.trim();
+
+  if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch(BACKEND_URL + '/send-contact', {
+      method: 'POST', headers: { 'Content-Type': 'application/json'  },
+      body: JSON.stringify({ name, phone, email, service, vehicle, location, message })
+    });
+    const data = await res.json();
+    if (data.success) {
+      successEl.textContent = '✓ Message sent! We\'ll reach out to you soon. Thank you for choosing Xpress Lube and Tires.';
+      successEl.classList.add('show'); setTimeout(() => successEl.classList.remove('show'), 8000);
+    } else { alert('Error: ' + data.message); }
+  } catch (err) {
+    alert('Network error — email us at info@xpresslubeandtires.com');
+  } finally { btn.disabled = false; btn.textContent = 'Send Message →'; }
+}
+
+/* ============================================================
+   POPULATE HOME QUOTE FORM — sync vehicle to contact form
+   ============================================================ */
+const originalShowPage = showPage;
+</script>
+</body>
+</html>
